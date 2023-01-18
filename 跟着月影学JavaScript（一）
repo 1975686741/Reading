@@ -1,0 +1,89 @@
+**一、本堂课重点内容：**
+
+-   JavaScript 好代码的标准
+-   HTML/CSS/JS 各司其责
+
+**二、详细知识点介绍：**
+
+1.写好JS的一些原则
+
+    - 各司其职
+              让HTML、CSS和JavaScript职能分离。
+    - 组件封装
+              好的UI组件具备正确性、扩展性、复用性。
+    - 过程抽象
+              应用函数式编程思想
+ 2. html、css、js各司其职
+ 
+     -   (html（结构层，超文本标记语言）
+     -   css（表现层，层叠样式表）
+     -   js（行为层，弱类型脚本语言，其源代码在发往客户端运行之前不需要经过编译，而是将文本格式的字符代码发送给浏览器由浏览器解释运行）,
+
+   编码原则： 结构、表现、行为 分离，**各自控制各自所负责的部分**
+
+
+**三、实践练习例子：**
+
+深夜食堂代码优化：
+
+![QQ截图20230118212254.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b7f05e5471e94ec8917fa42b7dd6a36b~tplv-k3u1fbpfcp-watermark.image?)
+版本一：
+ 
+![QQ截图20230118212947.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/da45640f23734c4db3c2eac4323623b6~tplv-k3u1fbpfcp-watermark.image?)
+
+```      const btn = document.getELementById('modeBtn');
+        btn.addEventL istener('click', (e) => {
+            const body = document.body;
+            if (e.target.innerHTML === '浅色'){
+                body.style.backgroundColor = 'black';
+            body.style.color = 'white';
+            e.target.innerHTML = '深色';
+        } else {
+            body .style.backgroundColor = 'white';
+            body.style.color = 'black' ;
+            e.target.innerHTML = '浅色';
+        }
+    });
+
+```
+优化后的版本：
+
+![QQ截图20230118213313.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6d79d1f61de7497f8a3a351906dce22e~tplv-k3u1fbpfcp-watermark.image?)
+
+![QQ截图20230118213442.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c62746f74ef5402d8b52eb614c076e2d~tplv-k3u1fbpfcp-watermark.image?)
+
+```
+<style>
+        #modeCheckBox:checked + .content {
+            background-color: black;
+            color: white;
+            transition: all 1s;
+        }
+    </style>
+    
+    
+<body>
+    <input id="modeCheckBox” type=" checkbox">
+    <div class="content">
+        <header>
+            <label id="modeBtn" for="modeCheckBox"></label>
+            <h1>深夜食堂</h1>
+        </header>
+    </div>
+</body>
+```
+我们发现：让JS和CSS分别处理，各司其职，代码不仅变得更简洁，可读性也显著提高。我们还可以通过class来优化这一过程，减少DOM的操作次数，代码变得越来越好了！
+
+**四、课后个人总结：**
+
+- HTML/CSS/JS各司其责，HTML处理结构，CSS处理表现，JS处理行为，三者职能分离。
+- 应当避免不必要的由JS直接操作样式，样式操作交给CSS。
+- 可以用class来表示状态。
+- 纯展示类的交互寻求方案最好不要用JS。
+- 虽然我还只是一名正在入门的代码新手，正在为成为一名优秀的程序员而努力，现在通过不断的学习我也逐渐明白了：不想当将军的士兵不是好士兵-程序员就应追求写出好的代码！
+
+
+**五、引用参考：**
+
+- 《JavaScript语言精粹》
+- 跟着月影学JavaScript-https://juejin.cn/course/bytetech/7145675320224383006/section/7145464663537352717
